@@ -10,15 +10,15 @@ terraform {
 }
 
 provider "aws" {
-  region = "${var.region}"
+  region = "{{.Args.region}}"
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "${var.bucket_name}"
+  bucket = "{{.Args.bucket_name}}"
   acl    = "private"
 
   tags = {
-    Name        = "${var.bucket_name}"
-    Environment = "${var.environment}"
+    Name        = "{{.Args.bucket_name}}"
+    Environment = "{{.Args.environment}}"
   }
 }
